@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>李依埕 · 资源下载</title>
+    <!-- Google Sans 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Material Symbols (chevron_right 箭头) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,1" />
+    <style>
+        /* ============================================================
+           Material Design 3 令牌 (Google 风格)
+           ============================================================ */
+        :root {
+            --md-primary: #1A73E8;
+            --md-on-primary: #FFFFFF;
+            --md-primary-container: #D2E3FC;
+            --md-on-primary-container: #041E49;
+
+            --md-surface: #FFFFFF;
+            --md-on-surface: #1E1E1E;
+            --md-surface-variant: #F1F3F4;
+            --md-on-surface-variant: #5F6368;
+
+            --md-surface-container: #F8F9FA;
+            --md-surface-container-high: #F1F3F4;
+            --md-surface-container-highest: #E8EAED;
+
+            --md-outline: #9AA0A6;
+            --md-outline-variant: #DADCE0;
+
+            --md-radius-large: 24px;
+            --md-radius-medium: 16px;
+            --md-radius-full: 9999px;
+
+            --md-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+            --md-elevation-2: 0 2px 6px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
+
+            --md-ref-typeface: 'Google Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+            --transition-smooth: 0.35s cubic-bezier(0.2, 0, 0, 1);
+
+            background-color: var(--md-surface);
+            color: var(--md-on-surface);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 深色主题 */
+        [data-theme="dark"] {
+            --md-primary: #8AB4F8;
+            --md-on-primary: #041E49;
+            --md-primary-container: #1E3A5F;
+            --md-on-primary-container: #D2E3FC;
+
+            --md-surface: #202124;
+            --md-on-surface: #E8EAED;
+            --md-surface-variant: #3C4043;
+            --md-on-surface-variant: #9AA0A6;
+
+            --md-surface-container: #2C2D2F;
+            --md-surface-container-high: #353638;
+            --md-surface-container-highest: #3F4042;
+
+            --md-outline: #5F6368;
+            --md-outline-variant: #3C4043;
+        }
+
+        /* ============================================================
+           全局重置
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--md-ref-typeface);
+            background-color: var(--md-surface);
+            color: var(--md-on-surface);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1.5rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 640px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ============================================================
+           顶部栏
+           ============================================================ */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem 1rem;
+            padding: 0.4rem 0 1.2rem 0;
+        }
+
+        .top-bar-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            color: var(--md-on-surface);
+        }
+
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        /* ===== 密码芯片 ===== */
+        .chip-password {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background-color: var(--md-surface-container-high);
+            color: var(--md-on-surface-variant);
+            padding: 0.25rem 1rem 0.25rem 0.9rem;
+            border-radius: var(--md-radius-full);
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--md-outline-variant);
+            cursor: default;
+            white-space: nowrap;
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .chip-password .code {
+            background-color: rgba(0, 0, 0, 0.06);
+            padding: 0 0.5rem;
+            border-radius: var(--md-radius-full);
+            font-family: 'Google Sans', 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+        }
+
+        [data-theme="dark"] .chip-password .code {
+            background-color: rgba(255, 255, 255, 0.10);
+        }
+
+        .chip-password .code:hover {
+            background-color: rgba(0, 0, 0, 0.12);
+        }
+
+        [data-theme="dark"] .chip-password .code:hover {
+            background-color: rgba(255, 255, 255, 0.18);
+        }
+
+        /* ===== 主题切换按钮 ===== */
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--md-surface-container-high);
+            color: var(--md-on-surface);
+            border: 1px solid var(--md-outline-variant);
+            padding: 0.25rem 0.9rem 0.25rem 0.7rem;
+            border-radius: var(--md-radius-full);
+            font-size: 0.8rem;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background-color 0.25s, box-shadow 0.25s, transform 0.15s, border-color 0.25s;
+            box-shadow: var(--md-elevation-1);
+            white-space: nowrap;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--md-surface-container-highest);
+            box-shadow: var(--md-elevation-2);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.96);
+            background-color: var(--md-surface-container-highest);
+        }
+
+        .theme-toggle .icon {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* ============================================================
+           资源卡片列表
+           ============================================================ */
+        .resource-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .download-item {
+            background-color: var(--md-surface-container);
+            border-radius: var(--md-radius-large);
+            box-shadow: var(--md-elevation-1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease,
+                border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid transparent;
+            user-select: none;
+        }
+
+        .download-item:hover {
+            background-color: var(--md-surface-container-high);
+            box-shadow: var(--md-elevation-2);
+            transform: translateY(-1px);
+            border-color: var(--md-outline-variant);
+        }
+
+        /* 点击反馈 — 用 JS 控制 pressed 类 */
+        .download-item.pressed {
+            background-color: var(--md-surface-container-highest);
+            transform: scale(0.99) translateY(1px);
+            transition-duration: 0.08s;
+        }
+
+        .download-item a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--md-on-surface);
+            padding: 0.8rem 1.2rem;
+            width: 100%;
+            border-radius: inherit;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-item a .link-text {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .download-item a .arrow-icon {
+            font-family: 'Material Symbols Outlined';
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: var(--md-on-surface-variant);
+            opacity: 0.4;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            flex-shrink: 0;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .download-item:hover a .arrow-icon {
+            opacity: 0.8;
+            transform: translateX(3px);
+        }
+
+        /* ===== 涟漪效果 (优化版) ===== */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--md-primary);
+            opacity: 0.10;
+            transform: scale(0);
+            animation: rippleAnim 0.65s cubic-bezier(0.2, 0, 0, 1) forwards;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .ripple {
+            opacity: 0.18;
+        }
+
+        @keyframes rippleAnim {
+            0% {
+                transform: scale(0);
+                opacity: 0.25;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* ===== 分割线 ===== */
+        .divider {
+            border: 0;
+            height: 1px;
+            background-color: var(--md-outline-variant);
+            margin: 1.2rem auto 1.4rem;
+            width: 100%;
+            opacity: 0.4;
+            transition: background-color 0.3s;
+        }
+
+        /* ============================================================
+           响应式
+           ============================================================ */
+        @media (max-width: 700px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.6rem;
+            }
+            .top-bar-title {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+            .top-bar-actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .download-item a {
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.8rem 0.5rem;
+            }
+            .top-bar-title {
+                font-size: 1.1rem;
+            }
+            .chip-password {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.7rem;
+            }
+            .theme-toggle {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+            .download-item a {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                padding: 2.5rem 2rem;
+            }
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        /* ============================================================
+           入场动画
+           ============================================================ */
+        .download-item {
+            opacity: 0;
+            animation: cardFadeIn 0.4s cubic-bezier(0.2, 0, 0, 1) forwards;
+        }
+        .download-item:nth-child(1) {
+            animation-delay: 0.02s;
+        }
+        .download-item:nth-child(2) {
+            animation-delay: 0.04s;
+        }
+        .download-item:nth-child(3) {
+            animation-delay: 0.06s;
+        }
+        .download-item:nth-child(4) {
+            animation-delay: 0.08s;
+        }
+        .download-item:nth-child(5) {
+            animation-delay: 0.10s;
+        }
+        .download-item:nth-child(6) {
+            animation-delay: 0.12s;
+        }
+        .download-item:nth-child(7) {
+            animation-delay: 0.14s;
+        }
+        .download-item:nth-child(8) {
+            animation-delay: 0.16s;
+        }
+        .download-item:nth-child(9) {
+            animation-delay: 0.18s;
+        }
+        .download-item:nth-child(10) {
+            animation-delay: 0.20s;
+        }
+        .download-item:nth-child(11) {
+            animation-delay: 0.22s;
+        }
+        .download-item:nth-child(12) {
+            animation-delay: 0.24s;
+        }
+        .download-item:nth-child(13) {
+            animation-delay: 0.26s;
+        }
+        .download-item:nth-child(14) {
+            animation-delay: 0.28s;
+        }
+        .download-item:nth-child(15) {
+            animation-delay: 0.30s;
+        }
+        .download-item:nth-child(16) {
+            animation-delay: 0.32s;
+        }
+        .download-item:nth-child(17) {
+            animation-delay: 0.34s;
+        }
+        .download-item:nth-child(18) {
+            animation-delay: 0.36s;
+        }
+        .download-item:nth-child(19) {
+            animation-delay: 0.38s;
+        }
+        .download-item:nth-child(20) {
+            animation-delay: 0.40s;
+        }
+        .download-item:nth-child(21) {
+            animation-delay: 0.42s;
+        }
+        .download-item:nth-child(22) {
+            animation-delay: 0.44s;
+        }
+        .download-item:nth-child(23) {
+            animation-delay: 0.46s;
+        }
+        .download-item:nth-child(24) {
+            animation-delay: 0.48s;
+        }
+        .download-item:nth-child(25) {
+            animation-delay: 0.50s;
+        }
+		.download-item:nth-child(26) {
+            animation-delay: 0.52s;
+        }
+		.download-item:nth-child(27) {
+            animation-delay: 0.54s;
+        }
+        .download-item:nth-child(28) {
+            animation-delay: 0.56s;
+        }
+        .download-item:nth-child(29) {
+            animation-delay: 0.58s;
+        }
+
+        @keyframes cardFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px) scale(0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* 滚动条 */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--md-outline-variant);
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--md-outline);
+        }
+
+        /* 复制成功提示 */
+        .copy-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background-color: var(--md-surface-container-high);
+            color: var(--md-on-surface);
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--md-radius-full);
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: var(--md-elevation-2);
+            border: 1px solid var(--md-outline-variant);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ===== 顶部栏 ===== -->
+        <header class="top-bar">
+            <div class="top-bar-title">李依埕的资源下载</div>
+            <div class="top-bar-actions">
+                <span class="chip-password">
+                    密码
+                    <span class="code" id="passwordCode">as</span>
+                </span>
+                <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                    <span class="icon" id="themeIcon">🌙</span>
+                    <span id="themeLabel">深色</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ===== 资源列表 ===== -->
+        <div class="resource-grid">
+            <!-- 第一组 -->
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/idoCK3qrzepg" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">vscold_x64_1.70.2_for_win7</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/iz2Ze3qrz9pg" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">python_3.8.0_for_win7</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/i1gQ23qs2w5c" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">Office_Tool</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://www.123865.com/s/gTaYvd-Gf8HA" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">tubowarp_for_win7</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/ifvrx3qrz4yf" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">VxKex</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/i4SKO3qs2wtg" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">geek</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://pan.baidu.com/s/1kaNC68YDlT6xxMwoSD6WJg?pwd=8888#list/path=%2F" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">小梦音乐最新版</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/ibWNy3qrwsfc" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">AutumnBox</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://www.123865.com/s/gTaYvd-vY8HA" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">scratch3</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/i9iDA3qrwtad" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">sumatraPDF</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/iArpj3qrz0if" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">chrome_win7</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/ikqfJ3qrz1pi" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">Bandizip安装包和激活工具</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://1853307744.share.123pan.cn/123pan/gTaYvd-Vl8HA" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">驱动精灵</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://potplayer.tv/" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">potplayer</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/iunbp3qry9ch" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">SakuraLauncher</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/i9GXT3qrwmmd" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">安卓手表ADB实用工具箱</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+			<div class="download-item">
+                <a href="https://1853307744.share.123pan.cn/123pan/gTaYvd-j4q9A" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">HMCL</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+
+            <hr class="divider" />
+
+            <!-- 第二组 -->
+            <div class="download-item">
+                <a href="https://mt2.cn/" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">mt2</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/ifcIu3nz2xif" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">NFC_Tools_pro</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/iOB0O3qs4n1g" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">go安装器</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://www.123684.com/s/gTaYvd-UU8HA" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">Chrome</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/iuZ693qs4nwh" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">甲壳虫ADB助手</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+			</div>
+            <div class="download-item">
+                <a href="https://1853307744.share.123pan.cn/123pan/gTaYvd-Er09A" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">android仿pixel</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwaoi.lanzouu.com/izOjs3zgjrne" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">Pixelplayer</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://wwr.lanzoui.com/iCCepu4qifi
+密码:52pj
+" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">Nova.Launcher.破解版</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+
+            <hr class="divider" />
+
+            <!-- 第三组 -->
+            <div class="download-item">
+                <a href="goole.html">
+                    <span class="link-text">goole账号</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+            <div class="download-item">
+                <a href="https://host-intro.retiehe.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="link-text">热铁盒网页托管</span>
+                    <span class="arrow-icon">chevron_right</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 复制提示 Toast -->
+    <div class="copy-toast" id="copyToast">已复制到剪贴板</div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ================================================================
+            // 1. 主题切换 (深色/浅色)
+            // ================================================================
+            const toggleBtn = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeLabel = document.getElementById('themeLabel');
+            const html = document.documentElement;
+            const STORAGE_KEY = 'liyicheng_theme';
+
+            const getStored = () => localStorage.getItem(STORAGE_KEY);
+            const setStored = (v) => localStorage.setItem(STORAGE_KEY, v);
+
+            const applyTheme = (isDark) => {
+                if (isDark) {
+                    html.setAttribute('data-theme', 'dark');
+                    themeIcon.textContent = '☀️';
+                    themeLabel.textContent = '浅色';
+                } else {
+                    html.removeAttribute('data-theme');
+                    themeIcon.textContent = '🌙';
+                    themeLabel.textContent = '深色';
+                }
+                setStored(isDark ? 'dark' : 'light');
+            };
+
+            const initTheme = () => {
+                const stored = getStored();
+                if (stored === 'dark') applyTheme(true);
+                else if (stored === 'light') applyTheme(false);
+                else applyTheme(false);
+            };
+
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                applyTheme(!isDark);
+            });
+
+            initTheme();
+
+            // ================================================================
+            // 2. 复制密码 + Toast 提示
+            // ================================================================
+            const passwordEl = document.getElementById('passwordCode');
+            const toast = document.getElementById('copyToast');
+            let toastTimer = null;
+
+            function showToast(msg) {
+                toast.textContent = msg || '已复制到剪贴板';
+                toast.classList.add('show');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 1800);
+            }
+
+            if (passwordEl) {
+                passwordEl.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const text = this.textContent.trim();
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(() => {
+                            showToast('已复制密码: ' + text);
+                        }).catch(() => {
+                            fallbackCopy(text);
+                        });
+                    } else {
+                        fallbackCopy(text);
+                    }
+                });
+            }
+
+            function fallbackCopy(text) {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                ta.style.top = '-9999px';
+                document.body.appendChild(ta);
+                ta.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('已复制密码: ' + text);
+                } catch (_) {}
+                document.body.removeChild(ta);
+            }
+
+            // ================================================================
+            // 3. 点击反馈优化 (柔和的 pressed 效果 + 涟漪)
+            // ================================================================
+            const items = document.querySelectorAll('.download-item');
+
+            items.forEach(item => {
+                // 涟漪
+                item.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height) * 1.2;
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    const ripple = document.createElement('span');
+                    ripple.className = 'ripple';
+                    ripple.style.width = ripple.style.height = `${size}px`;
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    this.appendChild(ripple);
+                    ripple.addEventListener('animationend', () => ripple.remove());
+                });
+
+                // pressed 类 (柔和点击反馈)
+                item.addEventListener('mousedown', function(e) {
+                    if (e.button !== 0) return;
+                    this.classList.add('pressed');
+                });
+
+                item.addEventListener('mouseup', function(e) {
+                    if (e.button !== 0) return;
+                    this.classList.remove('pressed');
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    this.classList.remove('pressed');
+                });
+
+                // 触摸设备支持
+                item.addEventListener('touchstart', function() {
+                    this.classList.add('pressed');
+                }, { passive: true });
+
+                item.addEventListener('touchend', function() {
+                    this.classList.remove('pressed');
+                }, { passive: true });
+
+                item.addEventListener('touchcancel', function() {
+                    this.classList.remove('pressed');
+                }, { passive: true });
+            });
+
+        })();
+    </script>
+</body>
+</html>
